@@ -1,10 +1,8 @@
 mod indexing;
 mod helpers;
 
-use indexing::IndexEntry;
-use indexing::{create_index, load_index};
-
-use crate::helpers::tokenize_term;
+use indexing::{IndexEntry, create_index, load_index};
+use helpers::tokenize_term;
 use std::fs;
 use std::io;
 use std::io::Write;
