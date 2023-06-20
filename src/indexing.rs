@@ -42,19 +42,19 @@ pub fn create_index(stop_words: &Vec<String>, silent: bool) {
 
     let json_string = serde_json::to_string(&index).expect("failed to serialize index");
 
-    let mut file = File::create("src/data/index.json").expect("failed to create file");
-    file.write_all(json_string.as_bytes()).expect("failed to write to file");
+    let mut file = File::create("src/data/index.json").expect("failed to create index.json");
+    file.write_all(json_string.as_bytes()).expect("failed to write to index.json");
 
     if !silent {
-        println!("index saved to src/data/index.json and ready!");
+        println!("index saved to index.json and ready!");
     }
 }
 
 
 pub fn load_index() -> Vec<IndexEntry> {
-    let file = fs::read_to_string("src/data/index.json").expect("failed to read index");
-    let index: serde_json::Value = serde_json::from_str(&file).expect("failed to parse index data");
-    let index = index.as_array().expect("failed to parse index data");
+    let file = fs::read_to_string("src/data/index.json").expect("failed to read index.json");
+    let index: serde_json::Value = serde_json::from_str(&file).expect("failed to parse index.json data");
+    let index = index.as_array().expect("failed to parse index.json data");
 
     let mut entries: Vec<IndexEntry> = vec![];
 

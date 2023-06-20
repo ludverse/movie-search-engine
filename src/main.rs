@@ -16,12 +16,9 @@ struct SearchResult {
 }
 
 fn main() {
-    let stop_words = fs::read_to_string("src/data/stop_words.json")
-        .expect("couldn't read file");
-    let stop_words: serde_json::Value =
-        serde_json::from_str(&stop_words).expect("couldn't parse JSON data");
-    let stop_words = stop_words
-        .as_array()
+    let stop_words = fs::read_to_string("src/data/stop_words.json").expect("failed to read stop_words.json");
+    let stop_words: serde_json::Value = serde_json::from_str(&stop_words).expect("failed to parse stop_words.json data");
+    let stop_words = stop_words.as_array()
         .unwrap()
         .into_iter()
         .map(|word| String::from(word.as_str().unwrap()))
