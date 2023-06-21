@@ -36,7 +36,6 @@ fn main() {
             .read_line(&mut search)
             .expect("coudn't read line");
         let mut search = search.trim().to_string();
-        println!("{}", tokenize_term(&search).join(" "));
 
         let start = Instant::now();
 
