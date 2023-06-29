@@ -1,11 +1,9 @@
 use regex::Regex;
 
 pub fn format_word(word: &str) -> String {
-    let remove_chars_re = Regex::new(r"['\.]").unwrap();
-
     word.to_lowercase()
         .chars()
-        .filter(|c| !remove_chars_re.is_match(c.to_string().as_str()))
+        .filter(|&c| !(c == '\'' || c == '.'))
         .map(|c| if c.is_ascii_alphanumeric() { c } else { ' ' })
         .collect()
 }

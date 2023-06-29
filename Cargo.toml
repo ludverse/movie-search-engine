@@ -5,6 +5,7 @@ edition = "2021"
 
 [dependencies]
 porter-stemmer = "0.1.2"
+progressing = "3.0.2"
 regex = "1"
 roman = "0.1.6"
 serde = { version = "1.0.104", features = ["derive"] }
